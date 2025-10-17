@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --background: #202124;
+    --cell-size:100px;
+    --mark-size:calc(var(--cell-size)* 0.9)
+}
+body{
+    background: var(--background);
+}
+header{
+    text-align: center;
+    color: white;
+    font: 400 12pt "Roboto", sans-serif;
+    margin: 64px 0 64px 0;
+}
+.board{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+    grid-template-columns: repeat(3, auto);
+}
+.cell{
+    width:var(--cell-size);
+    height: var(--cell-size);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px white solid;
+    border-top: none;
+    border-right: none;
+
+    position: relative;
+}
+.cell:nth-child(3n + 1){
+    border-left: none;
+}
+.cell.cell:nth-child(n + 7) {
+    border-bottom: none;
+}
+.cell.X::after,
+.cell.X::before{
+    content: "";
+    width: calc(var(--mark-size)* 0.15);
+    height: var(--mark-size);
+
+    background-color: white;
+}
+.cell.X::before{
+    transform: rotate(45deg);
+}
+.cell.O::before,
+.cell.O::after {
+    content: "";
+    width: var(--mark-size);
+    height: var(--mark-size);
+
+    border-radius: 50%;
+    
+    background-color: white;
+    position: absolute;
+}
