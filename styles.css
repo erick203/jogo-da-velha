@@ -175,3 +175,23 @@ header p {
         font-size: 1.2em;
     }
 }
+
+p {
+    line-height: 1.6; 
+    color: #cccccc; 
+    margin: 10px 0;
+}
+
+header p {
+    font-size: 1.5em; 
+    margin-bottom: 30px;
+    
+    color: var(--cor-o); 
+    text-shadow: 0 0 5px var(--cor-o); 
+
+    font-style: italic; 
+    
+    letter-spacing: 2px;
+}
+
+
