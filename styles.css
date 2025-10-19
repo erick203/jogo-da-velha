@@ -1,13 +1,13 @@
 :root {
-    --cor-fundo: #282c34; 
+    --cor-fundo: #1a0033; 
     --cor-texto: #ffffff;
-    --cor-x: #61dafb; 
-    --cor-o: #ff6699; 
-    --cor-placa: #3c414c; 
-    --cor-vitoria: #50fa7b; 
+    --cor-x: #00ffc8; 
+    --cor-o: #ff007b; 
+    --cor-placa: #2c0059; 
+    --cor-vitoria: #ffdd00; 
     
-    --tamanho-celula: 100px;
-    --borda-raio: 10px;
+    --tamanho-celula: 150px;
+    --borda-raio: 15px;
     --fonte-principal: 'Arial', sans-serif;
 }
 
@@ -29,65 +29,68 @@ body {
 
 main {
     text-align: center;
-    padding: 20px;
+    padding: 40px; 
     border-radius: var(--borda-raio);
     background-color: var(--cor-placa);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.7), 0 0 15px var(--cor-o); 
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 3.5em; 
     margin-bottom: 5px;
     color: var(--cor-x);
+    text-shadow: 0 0 10px var(--cor-x); 
 }
 
 header p {
-    font-size: 1em;
-    margin-bottom: 20px;
-    color: #999;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #ccc;
 }
 
 .board {
-    width: calc(3 * var(--tamanho-celula) + 2 * 10px); 
-    height: calc(3 * var(--tamanho-celula) + 2 * 10px);
+    width: calc(3 * var(--tamanho-celula) + 2 * 15px);
+    height: calc(3 * var(--tamanho-celula) + 2 * 15px);
     display: grid;
     grid-template-columns: repeat(3, var(--tamanho-celula));
     grid-template-rows: repeat(3, var(--tamanho-celula));
-    gap: 10px;
+    gap: 15px; 
     margin: 0 auto;
 }
 
 .cell {
-    background-color: var(--cor-fundo);
+    background-color: rgba(255, 255, 255, 0.05); 
     border-radius: var(--borda-raio);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4em;
+    font-size: 7em; 
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    
+    border: 2px solid rgba(255, 255, 255, 0.1); 
     position: relative;
 }
 
 .board.X .cell:not(.X):not(.O):hover {
-    background-color: rgba(97, 218, 251, 0.1); 
+    background-color: rgba(0, 255, 200, 0.2); 
+    box-shadow: 0 0 10px var(--cor-x); 
 }
 
 .board.O .cell:not(.X):not(.O):hover {
-    background-color: rgba(255, 102, 153, 0.1); 
+    background-color: rgba(255, 0, 123, 0.2); 
+    box-shadow: 0 0 10px var(--cor-o); 
 }
 
 .cell.X::before {
     content: 'X';
     color: var(--cor-x);
-    opacity: 1;
+    text-shadow: 0 0 15px var(--cor-x), 0 0 25px var(--cor-x); 
 }
 
 .cell.O::before {
     content: 'O';
     color: var(--cor-o);
-    opacity: 1;
+    text-shadow: 0 0 15px var(--cor-o), 0 0 25px var(--cor-o); 
 }
 
 .cell.X, .cell.O {
@@ -96,18 +99,15 @@ header p {
 
 .game-end-message {
     display: none; 
-    
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.9);
-    
+    background-color: rgba(0, 0, 0, 0.95);
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
     z-index: 100;
 }
 
@@ -116,43 +116,62 @@ header p {
 }
 
 .game-end-message [data-game-end-message] {
-    font-size: 4em;
-    margin-bottom: 20px;
+    font-size: 5em; 
+    margin-bottom: 30px;
     color: var(--cor-vitoria);
-    text-shadow: 0 0 10px var(--cor-vitoria);
+    text-shadow: 0 0 20px var(--cor-vitoria), 0 0 40px var(--cor-vitoria); 
+    animation: pulse 1.5s infinite alternate; 
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
 }
 
 #restartButton {
     background-color: var(--cor-x);
     color: var(--cor-fundo);
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.2em;
+    border: 3px solid var(--cor-o); 
+    padding: 20px 40px;
+    font-size: 1.5em; 
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
 }
 
 #restartButton:hover {
-    background-color: #4dc2ea;
+    background-color: #00e6b8;
+    box-shadow: 0 0 20px var(--cor-x); 
     transform: scale(1.05);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     :root {
-        --tamanho-celula: 80px;
+        --tamanho-celula: 100px; 
+    }
+    
+    .board {
+        width: calc(3 * var(--tamanho-celula) + 2 * 10px);
+        height: calc(3 * var(--tamanho-celula) + 2 * 10px);
+        gap: 10px;
     }
 
     header h1 {
-        font-size: 2em;
+        font-size: 2.5em;
     }
     
     .cell {
-        font-size: 3em;
+        font-size: 5em;
     }
 
     .game-end-message [data-game-end-message] {
-        font-size: 3em;
+        font-size: 3.5em;
+    }
+    
+    #restartButton {
+        padding: 15px 30px;
+        font-size: 1.2em;
     }
 }
