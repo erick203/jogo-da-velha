@@ -6,8 +6,9 @@
 
 "Este projeto foi uma imersão na aplicação das tecnologias fundamentais da web: HTML, CSS e JavaScript, com foco na criação e estilização de um componente de jogo dinâmico."
 
-## Tela Do Jogo
+## Jogo Da Velha
 <div align="center">
   <img width="1072" height="886" alt="Captura de tela 2025-10-20 094806" src="https://github.com/user-attachments/assets/777b66f3-5138-4d71-832a-a1e7986ca14d" />
 </div>
+
 
